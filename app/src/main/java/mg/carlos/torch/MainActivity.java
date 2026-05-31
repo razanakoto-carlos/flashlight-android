@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
+
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Switch switchTorch;
     private CameraManager cameraManager;
     private String cameraId;
+    private TextView tvStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         switchTorch = findViewById(R.id.switchTorch);
         rootLayout = findViewById(R.id.rootLayout);
         imgTorch = findViewById(R.id.imgTorch);
+        tvStatus = findViewById(R.id.tvStatus);
 
         cameraManager = (CameraManager)getSystemService(Context.CAMERA_SERVICE);
 
@@ -66,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             cameraManager.setTorchMode(cameraId, true);
             isTorchOn = true;
+            tvStatus.setText("ON");
             rootLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,R.color.bg_on));
             imgTorch.setImageResource(R.drawable.ic_torch_on);
         }catch (Exception e){
@@ -78,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             cameraManager.setTorchMode(cameraId,false);
             isTorchOn = false;
+            tvStatus.setText("OFF");
             rootLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,R.color.bg_off));
             imgTorch.setImageResource(R.drawable.ic_torch_off);
         }catch (Exception e){

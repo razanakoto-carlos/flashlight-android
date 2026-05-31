@@ -84,7 +84,7 @@ cameraManager.setTorchMode(cameraId, false);
 **Étapes :**
 
 ```bash
-git clone https://github.com/razanakoto-carlos/flashlight-android
+git clone https://github.com/razanakoto-carlos/flashlight-android.git
 ```
 
 1. Ouvrir le projet dans Android Studio
